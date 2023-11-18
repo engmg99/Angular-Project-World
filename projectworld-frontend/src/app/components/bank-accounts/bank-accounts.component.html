@@ -1,21 +1,21 @@
 <div class="container">
-    <div class="account-list">
-        <div *ngFor="let a of accounts , let i = index">
-            {{i}} {{a.name}}
-        </div>
+  <div class="account-list">
+    <div *ngFor="let a of accounts; let i = index">{{ i }} {{ a.name }}</div>
+  </div>
+  <div class="create-account">
+    <div>
+      <input type="text" placeholder="Enter Name" #name />
     </div>
-    <div class="create-account">
-        <div>
-            <input type="text" placeholder="Enter Name" #name>
-        </div>
-        <div>
-            <input type="text" placeholder="Enter Bank Name" #bankName>
-        </div>
-        <div>
-            <input type="text" placeholder="Enter Amount" #amt>
-        </div>
-        <div>
-            <button type="button" (click)="createAcc(name.value,bankName.value,amt.value)">Create</button>
-        </div>
+    <div>
+      <input type="text" placeholder="Enter Bank Name" #bankName />
     </div>
+    <div>
+      <input type="text" placeholder="Enter Amount" #amt />
+    </div>
+    <div>
+      <button type="button" (click)="createAcc(name.value, bankName.value, amt.value)">
+        Create
+      </button>
+    </div>
+  </div>
 </div>

@@ -1,31 +1,31 @@
 <div class="container">
-    <form #sendForm=ngForm (ngSubmit)="doSubmitForm(sendForm)">
-        <mat-card class="card">
-            <h1>Compose Email</h1>
-            <mat-form-field class="field" appearance="outline">
-                <mat-label>From:</mat-label>
-                <input matInput value="goyalmunish9906@gmail.com" disabled> 
-            </mat-form-field>
+  <form #sendForm="ngForm" (ngSubmit)="doSubmitForm(sendForm)">
+    <mat-card class="card">
+      <h1>Compose Email</h1>
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>From:</mat-label>
+        <input matInput value="goyalmunish9906@gmail.com" disabled />
+      </mat-form-field>
 
-            <mat-form-field class="field" appearance="outline">
-                <mat-label>To:</mat-label>
-                <input matInput ngModel name="to">
-            </mat-form-field>
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>To:</mat-label>
+        <input matInput ngModel name="to" />
+      </mat-form-field>
 
-            <mat-form-field class="field" appearance="outline">
-                <mat-label>Subject:</mat-label>
-                <input matInput ngModel name="subject">
-            </mat-form-field>
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>Subject:</mat-label>
+        <input matInput ngModel name="subject" />
+      </mat-form-field>
 
-            <mat-form-field class="field" appearance="outline">
-                <mat-label>Message:</mat-label>
-                <textarea rows="12" matInput ngModel name="message"></textarea>
-            </mat-form-field>
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>Message:</mat-label>
+        <textarea rows="12" matInput ngModel name="message"></textarea>
+      </mat-form-field>
 
-            <div class="email-button">
-                <button type="submit" mat-raised-button color="primary">Send Email</button>
-                <button type="reset" mat-raised-button color="accent">Reset</button>
-            </div>
-        </mat-card>
-    </form>
+      <div class="email-button">
+        <button type="submit" mat-raised-button color="primary">Send Email</button>
+        <button type="reset" mat-raised-button color="accent">Reset</button>
+      </div>
+    </mat-card>
+  </form>
 </div>

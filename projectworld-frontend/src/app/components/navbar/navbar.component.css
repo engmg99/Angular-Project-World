@@ -9,8 +9,8 @@ a {
 }
 
 .navbar {
-  background-color: #7952B3;
-  color: #B5D3FA;
+  background-color: #7952b3;
+  color: #b5d3fa;
   padding: 1.4rem 2.5rem;
 }
 
@@ -61,5 +61,5 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }

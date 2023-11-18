@@ -1,6 +1,6 @@
 export interface Book {
-    id: number;
-    name: string;
-    author: string;
-    bookCode: string;
+  id: number;
+  name: string;
+  author: string;
+  bookCode: string;
 }

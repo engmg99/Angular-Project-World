@@ -10,7 +10,7 @@
   margin-bottom: 20px;
 }
 
-.contact-box>a {
+.contact-box > a {
   color: inherit;
 }
 
@@ -19,14 +19,14 @@
   padding: 0;
 }
 
-.contact-box.center-version>a {
+.contact-box.center-version > a {
   display: block;
   background-color: #ffffff;
   padding: 20px;
   text-align: center;
 }
 
-.contact-box.center-version>a img {
+.contact-box.center-version > a img {
   width: 80px;
   height: 80px;
   margin-top: 10px;
@@ -52,9 +52,9 @@ a {
   -moz-background-clip: padding;
   border-radius: 6px;
   background-clip: padding-box;
-  -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, .5);
-  -moz-box-shadow: 0 0 40px rgba(0, 0, 0, .5);
-  box-shadow: 0 0 40px rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
   color: #000;
   background-color: #fff;
   border: rgba(0, 0, 0, 0);

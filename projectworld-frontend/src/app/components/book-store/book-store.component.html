@@ -1,30 +1,46 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  rel="stylesheet"
+/>
 
-<div class="serviceError" *ngIf="getBooksError">
-  Error While Fetching Data
-</div>
+<div class="serviceError" *ngIf="getBooksError">Error While Fetching Data</div>
 
-<div class="container" *ngIf="getBooksError==false">
+<div class="container" *ngIf="getBooksError == false">
   <div>
-    <a class=" btn btn-xs btn-white" data-toggle="modal" data-target="#addBookModal"><i class="fa fa-plus"></i>
-      Add Book</a>
+    <a class="btn btn-xs btn-white" data-toggle="modal" data-target="#addBookModal"
+      ><i class="fa fa-plus"></i> Add Book</a
+    >
   </div>
   <div class="row">
-    <div class="col-md-3" *ngFor="let book of books; let i=index;">
+    <div class="col-md-3" *ngFor="let book of books; let i = index">
       <div class="contact-box center-version">
         <a>
-          <img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar{{i+1}}.png">
-          <h3 class="m-b-xs"><strong>{{book.name}}</strong></h3>
-          <div class="font-bold">{{book.author}}</div>
+          <img
+            alt="image"
+            class="img-circle"
+            src="https://bootdey.com/img/Content/avatar/avatar{{ i + 1 }}.png"
+          />
+          <h3 class="m-b-xs">
+            <strong>{{ book.name }}</strong>
+          </h3>
+          <div class="font-bold">{{ book.author }}</div>
         </a>
         <div class="contact-box-footer">
           <div class="m-t-xs btn-group">
-            <a (click)="editModal(book)" class="btn btn-xs btn-white" data-toggle="modal"
-              data-target="#editBookModal"><i class="fa fa-pencil"></i>
-              Edit </a>
-            <a (click)="deleteModal(book)" class=" btn btn-xs btn-white" data-toggle="modal"
-              data-target="#deleteBookModal"><i class="fa fa-trash"></i>
-              Delete</a>
+            <a
+              (click)="editModal(book)"
+              class="btn btn-xs btn-white"
+              data-toggle="modal"
+              data-target="#editBookModal"
+              ><i class="fa fa-pencil"></i> Edit
+            </a>
+            <a
+              (click)="deleteModal(book)"
+              class="btn btn-xs btn-white"
+              data-toggle="modal"
+              data-target="#deleteBookModal"
+              ><i class="fa fa-trash"></i> Delete</a
+            >
           </div>
         </div>
       </div>
@@ -33,25 +49,44 @@
 </div>
 
 <!--Delete Modal-->
-<div id="deleteBookModal" class="modal modal-message modal-danger fade" style="display: none;" aria-hidden="true">
+<div
+  id="deleteBookModal"
+  class="modal modal-message modal-danger fade"
+  style="display: none"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <div class="modal-title">Are you sure to delete Book {{deleteBook?.name}}</div>
+      <div class="modal-title">Are you sure to delete Book {{ deleteBook?.name }}</div>
       <div class="modal-footer">
-        <button (click)='deleteBookModal(deleteBook?.id)' type="button" class="btn btn-danger"
-          data-dismiss="modal">Yes</button>
+        <button
+          (click)="deleteBookModal(deleteBook?.id)"
+          type="button"
+          class="btn btn-danger"
+          data-dismiss="modal"
+        >
+          Yes
+        </button>
         <button type="button" class="btn" data-dismiss="modal">No</button>
       </div>
-    </div> <!-- / .modal-content -->
-  </div> <!-- / .modal-dialog -->
+    </div>
+    <!-- / .modal-content -->
+  </div>
+  <!-- / .modal-dialog -->
 </div>
 
 <!--Add Modal-->
-<div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel"
-  aria-hidden="true">
+<div
+  class="modal fade"
+  id="addBookModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addBookModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -64,16 +99,25 @@
         <form #addForm="ngForm">
           <div class="form-group">
             <label for="name">Book Name</label>
-            <input type="text" ngModel name="name" class="form-control" id="name" required>
+            <input type="text" ngModel name="name" class="form-control" id="name" required />
           </div>
           <div class="form-group">
             <label for="email">Book Author</label>
-            <input type="email" ngModel name="author" class="form-control" id="author" required>
+            <input type="email" ngModel name="author" class="form-control" id="author" required />
           </div>
           <div class="modal-footer">
-            <button type="button" id="add-book-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button (click)="saveBookModal(addForm)" [disabled]="addForm.invalid" type="submit" class="btn btn-primary"
-              data-dismiss="modal">Save changes</button>
+            <button type="button" id="add-book-form" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button
+              (click)="saveBookModal(addForm)"
+              [disabled]="addForm.invalid"
+              type="submit"
+              class="btn btn-primary"
+              data-dismiss="modal"
+            >
+              Save changes
+            </button>
           </div>
         </form>
       </div>
@@ -82,32 +126,72 @@
 </div>
 
 <!--Edit Modal-->
-<div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="editBookModalLabel"
-  aria-hidden="true">
+<div
+  class="modal fade"
+  id="editBookModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editBookModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 id="editBookModalLabel">Edit Book {{editBook?.name}}</h2>
+        <h2 id="editBookModalLabel">Edit Book {{ editBook?.name }}</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form #editForm="ngForm">
-          <input type="hidden" ngModel={{editBook?.id}} name="id" class="form-control" id="id">
-          <input type="hidden" ngModel={{editBook?.bookCode}} name="bookCode" class="form-control" id="bookCode">
+          <input
+            type="hidden"
+            ngModel="{{ editBook?.id }}"
+            name="id"
+            class="form-control"
+            id="id"
+          />
+          <input
+            type="hidden"
+            ngModel="{{ editBook?.bookCode }}"
+            name="bookCode"
+            class="form-control"
+            id="bookCode"
+          />
           <div class="form-group">
             <label for="name">Book Name</label>
-            <input type="text" ngModel={{editBook?.name}} name="name" class="form-control" id="name" required>
+            <input
+              type="text"
+              ngModel="{{ editBook?.name }}"
+              name="name"
+              class="form-control"
+              id="name"
+              required
+            />
           </div>
           <div class="form-group">
             <label for="email">Book Author</label>
-            <input type="email" ngModel={{editBook?.author}} name="author" class="form-control" id="author" required>
+            <input
+              type="email"
+              ngModel="{{ editBook?.author }}"
+              name="author"
+              class="form-control"
+              id="author"
+              required
+            />
           </div>
           <div class="modal-footer">
-            <button type="button" id="add-book-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button (click)='saveEditModalChanegs(editForm)' data-dismiss="modal" type="submit"
-              class="btn btn-primary">Save changes</button>
+            <button type="button" id="add-book-form" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button
+              (click)="saveEditModalChanegs(editForm)"
+              data-dismiss="modal"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Save changes
+            </button>
           </div>
         </form>
       </div>
