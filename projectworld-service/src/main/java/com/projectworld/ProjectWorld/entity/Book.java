@@ -16,6 +16,10 @@ import org.springframework.stereotype.Component;
 @Table(name = "books")
 public class Book implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "bookId", nullable = false, updatable = false)

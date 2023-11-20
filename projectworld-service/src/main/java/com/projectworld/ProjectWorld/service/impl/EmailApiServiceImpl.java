@@ -1,4 +1,4 @@
-package com.projectworld.ProjectWorld.services;
+package com.projectworld.ProjectWorld.service.impl;
 
 import java.util.Properties;
 
@@ -12,8 +12,10 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.stereotype.Service;
 
+import com.projectworld.ProjectWorld.service.EmailApiService;
+
 @Service
-public class EmailApiService {
+public class EmailApiServiceImpl implements EmailApiService {
 
 	public void sendEmail(String message, String subject, String to) {
 		String from = "goyalmunish9906@gmail.com";

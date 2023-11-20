@@ -1,0 +1,26 @@
+<h2 class="text-center">Employees List</h2>
+<div class="container">
+  <a class="btn btn-primary my-2" routerLink="/create-employee">Add Employee </a>
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email Id</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of employeesList">
+        <td>{{ i.firstName }}</td>
+        <td>{{ i.lastName }}</td>
+        <td>{{ i.emailId }}</td>
+        <td>
+          <a (click)="handleEditEmployee(i.id)" class="btn btn-success mx-2">Edit</a>
+          <a (click)="handleDeleteEmployee(i.id)" class="btn btn-danger mx-2">Delete</a>
+          <a (click)="handlePreview(i.id)" class="btn btn-primary mx-2">Preview</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

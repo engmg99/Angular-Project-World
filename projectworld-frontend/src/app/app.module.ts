@@ -18,6 +18,11 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SendEmailComponent} from './components/send-email/send-email.component';
 import {BankAccountsComponent} from './components/bank-accounts/bank-accounts.component';
+import {EmployeesComponent} from './components/employees/employees.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {CreateEmployeeComponent} from './components/employees/create-employees/create-employee/create-employee.component';
+import {EditEmployeeComponent} from './components/employees/edit-employee/edit-employee.component';
+import {EmployeeDetailComponent} from './components/employees/employee-details/employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import {BankAccountsComponent} from './components/bank-accounts/bank-accounts.co
     EmailComponent,
     SendEmailComponent,
     BankAccountsComponent,
+    EmployeesComponent,
+    FooterComponent,
+    CreateEmployeeComponent,
+    EditEmployeeComponent,
+    EmployeeDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-package com.projectworld.ProjectWorld.services;
+package com.projectworld.ProjectWorld.service.impl;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 import com.projectworld.ProjectWorld.entity.Book;
 import com.projectworld.ProjectWorld.exceptions.BookNotFoundException;
 import com.projectworld.ProjectWorld.repo.BookRepo;
+import com.projectworld.ProjectWorld.service.BookServcie;
 
 @Service
-public class BookService {
+public class BookServiceImpl implements BookServcie {
 	// private static List<Book> list = new ArrayList<Book>();
 //
 //	static {

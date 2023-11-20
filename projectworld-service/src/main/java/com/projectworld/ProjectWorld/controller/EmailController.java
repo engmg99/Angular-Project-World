@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projectworld.ProjectWorld.entity.EmailRequest;
-import com.projectworld.ProjectWorld.services.EmailApiService;
+import com.projectworld.ProjectWorld.service.impl.EmailApiServiceImpl;
 
 @RestController
 @RequestMapping(value = "/email/")
 public class EmailController {
 
 	@Autowired
-	private EmailApiService emailService;
+	private EmailApiServiceImpl emailService;
 
 	@PostMapping("/sendEmail")
 	public String emailRequestData(@RequestBody EmailRequest emailData) {

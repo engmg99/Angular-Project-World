@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projectworld.ProjectWorld.entity.Book;
-import com.projectworld.ProjectWorld.services.BookService;
+import com.projectworld.ProjectWorld.service.impl.BookServiceImpl;
 
 @RestController
 @RequestMapping(value = "/bookstore/")
@@ -26,7 +25,7 @@ public class BookController {
 	private Book book1;
 
 	@Autowired
-	private BookService bookservice;
+	private BookServiceImpl bookservice;
 
 	@GetMapping("/books")
 	public Book getBooks() {
