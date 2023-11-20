@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 enum TransactionType {
@@ -14,42 +16,59 @@ enum TransactionType {
 class TransactionSummary {
 	int transactionId;
 	boolean isSenderEligibleForReward;
+
+	TransactionSummary(int txnId, boolean isTrue) {
+		transactionId = txnId;
+		isSenderEligibleForReward = isTrue;
+	}
 }
 
 class Payment {
 	Map<String, Integer> txnCountMap = new HashMap<>();
 	Map<Integer, Integer> senderIdToTnxCountMap = new HashMap<>();
+	List<Map<Integer, TransactionType>> list = new ArrayList<>();
 	static int p2mCount = 1;
 	static int p2pCount = 1;
 	static int selfCount = 1;
 
 	TransactionSummary makePayment(int transactionId, int senderId, int amount, TransactionType transactionType) {
-		TransactionSummary obj = new TransactionSummary();
-		if (transactionType == TransactionType.P2M) {
-			// senderIdToTnxCountMap.put(Integer.valueOf(senderId), p2mtnxcount++);
-			txnCountMap.put("P2M", p2mCount++);
-			obj.transactionId = transactionId;
-			obj.isSenderEligibleForReward = true;
+		TransactionSummary txnSummaryObj = new TransactionSummary(transactionId, false);
+		Map<Integer, TransactionType> txnDetailMap = new HashMap<>();
+		if (transactionType == TransactionType.P2P) {
+			txnDetailMap.put(senderId, transactionType);
+			txnSummaryObj = new TransactionSummary(transactionId, false);
+			list.add(txnDetailMap);
 		} else if (transactionType == TransactionType.P2M) {
-			// senderIdToTnxCountMap.put(Integer.valueOf(senderId), p2ptnxcount++);
-			txnCountMap.put("P2P", p2pCount++);
-			obj.transactionId = transactionId;
-			obj.isSenderEligibleForReward = true;
+//			System.out.println("Size: "+list.size());
+			if (list.size() < 100) {
+//				System.out.println("If");
+				txnSummaryObj = new TransactionSummary(transactionId, true);
+			}else {
+//				System.out.println("Else");
+				for (int i=0;i<100;i++) {
+					if(list.get(i).containsKey(senderId)) {
+						txnSummaryObj = new TransactionSummary(transactionId, true);
+					}
+				}
+			}
+			txnDetailMap.put(senderId, transactionType);
+			list.add(txnDetailMap);
 		} else {
-			// senderIdToTnxCountMap.put(Integer.valueOf(senderId), selftnxcount++);
-			txnCountMap.put("Self", selfCount++);
+			txnDetailMap.put(senderId, transactionType);
+			list.add(txnDetailMap);
+			txnSummaryObj = new TransactionSummary(transactionId, false);
 		}
-		return obj;
+		return txnSummaryObj;
 	}
 
 	int getNumberOfTransactions(int senderId, TransactionType transactionType) {
-		if (txnCountMap.containsKey(transactionType.P2M)
-				&& senderIdToTnxCountMap.containsKey(Integer.valueOf(senderId))) {
-			System.out.println(txnCountMap.containsKey(transactionType.P2M));
-			System.out.println(senderIdToTnxCountMap.containsKey(Integer.valueOf(senderId)));
-			return senderIdToTnxCountMap.get(Integer.valueOf(senderId));
+		int count = 0;
+		for (Map<Integer, TransactionType> obj : list) {
+			if (obj.containsKey(senderId) && obj.get(senderId) == transactionType) {
+				count++;
+			}
 		}
-		return 0;
+		return count;
 	}
 }
 
@@ -89,16 +108,242 @@ public class PaymentSystem {
 }
 
 /*
- * 4 makePayment 0 2 100 P2P makePayment 1 4 18 P2M makePayment 2 2 50 P2P
- * getNumberOfTransactions 2 P2P
- * 
- * 
- * 
- * op 0 false 1 true 2 false 2
- * 
- * 
- * 6 makePayment 0 2 100 P2P makePayment 1 4 18 P2M makePayment 2 2 50 P2P
- * makePayment 2 2 50 Self makePayment 2 2 500 P2P getNumberOfTransactions 2 P2P
- * 
- * op 0 false 1 true 2 false 2 false 2 false 3
- */
+4
+makePayment 0 2 100 P2P
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+getNumberOfTransactions 2 P2P
+
+op 
+0 false 
+1 true 
+2 false 
+2
+
+6
+makePayment 0 2 100 P2P
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2P
+makePayment 2 2 50 Self
+makePayment 2 2 500 P2P
+getNumberOfTransactions 2 P2P
+
+op 
+0 false 
+1 true 
+2 false 
+2 false 
+2 false 
+3
+
+
+103
+makePayment 0 2 100 P2P
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 500 P2M
+makePayment 1 4 18 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 2 2 50 P2M
+makePayment 6 7 50 P2M
+getNumberOfTransactions 2 P2M
+
+op
+0 false
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+1 true
+2 true
+2 true
+2 true
+6 false
+75
+*/
