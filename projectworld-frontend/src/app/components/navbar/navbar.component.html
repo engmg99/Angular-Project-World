@@ -1,14 +1,19 @@
 <nav class="navbar">
   <ul>
     <li><a [routerLink]="['home']" routerLinkActive="activebutton">Home</a></li>
-    <li><a href="#">Menu</a></li>
     <li><a [routerLink]="['bookstore']" routerLinkActive="activebutton">BookStore</a></li>
     <li><a [routerLink]="['email']" routerLinkActive="activebutton">Email</a></li>
-    <li><a href="#">Icons</a></li>
     <li><a routerLink="employees" routerLinkActive="activebutton">Employees Management</a></li>
     <li><a routerLink="bankAccounts" routerLinkActive="activebutton">Bank</a></li>
-    <!-- <div class="search">
-      <input type="text" name="search" id="search">
-    </div> -->
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+        aria-expanded="false">CrickInformer<span class="caret"></span></a>
+      <ul class="dropdown-menu submenu">
+        <li><a class="dropdown-item" routerLink="match-home">Home</a></li>
+        <li><a class="dropdown-item" routerLink="live-matches">Live Matches</a></li>
+        <li><a class="dropdown-item" routerLink="match-history">Match History</a></li>
+        <li><a class="dropdown-item" routerLink="match-point-table">Point Table</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
