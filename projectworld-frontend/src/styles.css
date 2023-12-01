@@ -18,7 +18,7 @@ body {
   box-shadow: 5px 10px rgb(153, 150, 150);
 }
 
-.footer {
+/* .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -26,4 +26,4 @@ body {
   background-color: gray;
   color: white;
   text-align: center;
-}
+} */

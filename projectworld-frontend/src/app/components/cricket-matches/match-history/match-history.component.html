@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 class="p-2">Match History</h1>
+    <div *ngIf="(allMatch | json) != ({}| json);else showNoMatch">
+        <div class="row">
+            <div class="col-md-3 nopadding" *ngFor="let match of allMatch; let i = index">
+                <app-match-card class="h-100" [liveMatch]="match"></app-match-card>
+            </div>
+        </div>
+    </div>
+    <ng-template #showNoMatch>
+        <div class="container">
+            <h1>No Live Matches...</h1>
+        </div>
+    </ng-template>
+</div>

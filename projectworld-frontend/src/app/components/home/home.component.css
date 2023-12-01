@@ -1,8 +1,11 @@
 .section {
   height: 100vh;
-  display: flex; /* establish flex container */
-  flex-direction: column; /* stack flex items vertically */
-  position: relative; /* establish neares positioned ancenstor for absolute positioning */
+  display: flex;
+  /* establish flex container */
+  flex-direction: column;
+  /* stack flex items vertically */
+  position: relative;
+  /* establish neares positioned ancenstor for absolute positioning */
 }
 
 .text {

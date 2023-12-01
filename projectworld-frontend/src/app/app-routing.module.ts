@@ -9,6 +9,9 @@ import {EmployeesComponent} from './components/employees/employees.component';
 import {CreateEmployeeComponent} from './components/employees/create-employees/create-employee/create-employee.component';
 import {EditEmployeeComponent} from './components/employees/edit-employee/edit-employee.component';
 import {EmployeeDetailComponent} from './components/employees/employee-details/employee-detail/employee-detail.component';
+import {MatchPointTableComponent} from './components/cricket-matches/match-point-table/match-point-table.component';
+import {MatchHistoryComponent} from './components/cricket-matches/match-history/match-history.component';
+import {LiveMatchesComponent} from './components/cricket-matches/live-matches/live-matches.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -21,6 +24,9 @@ const routes: Routes = [
   {path: 'create-employee', component: CreateEmployeeComponent},
   {path: 'edit-employee/:id', component: EditEmployeeComponent},
   {path: 'view-employee/:id', component: EmployeeDetailComponent},
+  {path: 'live-matches', component: LiveMatchesComponent},
+  {path: 'match-history', component: MatchHistoryComponent},
+  {path: 'match-point-table', component: MatchPointTableComponent},
 ];
 
 @NgModule({

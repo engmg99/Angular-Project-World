@@ -1,0 +1,24 @@
+<div class="container">
+    <h1 class="p-2">Point Table</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" *ngFor="let heading of tableHeading;">
+                        {{heading}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="cursor: pointer; transition: all;" *ngFor="let team of pointTable; let i = index"
+                    [ngClass]="{'bg-success':i<=4,'bg-danger':i>4}">
+                    <td>{{i+1}}</td>
+                    <td *ngFor="let data of team;">
+                        {{data}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
